@@ -7,10 +7,30 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<link rel="" href="" />
-		<title>Insert title here</title>
+		<link rel="stylesheet" href="<c:url value="/resources/css/main.css" />" />
+		<title>${titre}</title>
 	</head>
 	<body>
-		<h3>Tout va bien, si tu me lis</h3>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<h4>Tous les produits</h4>
+				</div>
+				<div class="col-md-4">
+					<h4>Creer Categorie</h4>
+					<div>
+						<c:url value="/categories" var="catUrl" />
+						<form:form action="${catUrl}" modelAttribute="categorie" method="post">
+							<div class="form-group">
+								<label for="">Nom</label>
+								<form:input path="nom" id="nom" class="form-control"/>
+							</div>
+							<button class="btn btn-primary" type="submit">Enregistrer</button>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 	</body>
 </html>
