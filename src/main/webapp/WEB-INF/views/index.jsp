@@ -28,7 +28,29 @@
 							<button class="btn btn-primary" type="submit">Enregistrer</button>
 						</form:form>
 					</div>
+					<div>
+						<h4>Creer Produit</h4>
+						<c:url value="/produits" var="prodUrl" />
+						<form:form modelAttribute="produit" action="${prodUrl}" method="post">
+							<div class="form-group">
+								<label for="nom">Nom</label>
+								<form:input path="nom" id="nom" />
+							</div>
+							<div class="form-group">
+								<label for="prix">Prix</label>
+								<form:input path="prix" id="prix" />
+							</div>
+							<div class="form-group">
+								<label for="categorie">Categorie</label>
+								<form:select path="categorie">
+									<form:options items="${categories}" itemLabel="nom" />
+								</form:select>
+							</div>
+							<button class="btn btn-primary">Nouveau Produit</button>
+						</form:form>
+					</div>
 				</div>
+				
 			</div>
 		</div>
 	
