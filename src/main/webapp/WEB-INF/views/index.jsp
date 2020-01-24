@@ -43,7 +43,7 @@
 							<div class="form-group">
 								<label for="categorie">Categorie</label>
 								<form:select path="categorie">
-									<form:options items="${categories}" itemLabel="nom" />
+									<form:options items="${categories}" itemValue="id" itemLabel="nom" />
 								</form:select>
 							</div>
 							<button class="btn btn-primary">Nouveau Produit</button>
