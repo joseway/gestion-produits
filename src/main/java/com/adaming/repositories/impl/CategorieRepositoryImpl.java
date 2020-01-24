@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,10 +12,12 @@ import com.adaming.models.Categorie;
 import com.adaming.repositories.CategorieRepository;
 
 @Repository
+@Transactional
 public class CategorieRepositoryImpl implements CategorieRepository{
 
 	@PersistenceContext
 	private EntityManager em;
+	
 	
 	public Categorie save(Categorie categorie) {
 		
