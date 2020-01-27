@@ -23,14 +23,15 @@ public class ProduitController {
 	@Autowired
 	private CategorieService categorieService;
 
-	@RequestMapping(value="")
+	@RequestMapping(value="", method=RequestMethod.POST)
 	public String saveProduit(@ModelAttribute("produit")Produit produit) {
 		System.out.println("Cat Nom: " + produit.getCategorie().getNom());
+		System.out.println("Cat Nom: " + produit.getCategorie().getId());
+		System.out.println("Cat Prod: " + produit.getNom());
 		
 		Long catId = Long.parseLong(produit.getCategorie().getNom());
 		Categorie prodCat = categorieService.findById(catId);
 		produit.setCategorie(prodCat);
-		
 		
 		produitService.save(produit);
 		
@@ -47,7 +48,12 @@ public class ProduitController {
 	@RequestMapping(value="/update/{id}", method=RequestMethod.GET)
 	public String update(@PathVariable("id")Long id, Model model) {
 		model.addAttribute("categories", categorieService.findAll());
-		model.addAttribute("produit", produitService.findById(id));
+		Produit prod = produitService.findById(id);
+		
+		model.addAttribute("produit", prod);
+		
+		System.out.println("Prod cat nom: " + prod.getCategorie().getNom());
+		System.out.println("Prod cat id: " + prod.getCategorie().getId());
 		
 		return "updateProduit";
 	}
@@ -56,5 +62,11 @@ public class ProduitController {
 		produitService.save(produit);
 		
 		return "redirect:/produits";
+	}
+	@RequestMapping(value="/delete/{id}")
+	public String delete(@PathVariable("id")Long id) {
+		produitService.deleteById(id);
+		
+		return "redirect:/";
 	}
 }

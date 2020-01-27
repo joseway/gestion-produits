@@ -13,6 +13,9 @@
 		<h4>${produit.nom}</h4>
 		<p>Prix: ${produit.getPrix()}</p>
 		<p>Categorie: ${produit.categorie.nom}</p>
-		<p><a href="<c:url value="/produits/update/${produit.id}" />">Modifier</a></p>
+		<p>
+			<a href="<c:url value="/produits/update/${produit.id}" />">Modifier</a>
+			<a href="<c:url value="/produits/delete/${produit.id}" />">Supprimer</a>
+		</p>
 	</body>
 </html>

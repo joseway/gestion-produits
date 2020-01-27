@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<c:url value="/produits/update/${produit.id}" var="updateUrl" />
+		<c:url value="/produits" var="updateUrl" />
 		<form:form action="${updateUrl}" method="post" modelAttribute="produit">
 			<form:input path="id" type="hidden" value="${produit.id}"/>
 			<div class="form-group">
@@ -22,8 +22,9 @@
 				<form:input path="prix" id="prix" class="form-control"/>
 			</div>
 			<div class="form-group">
+				<label for="categorie">Categorie</label>
 				<form:select path="categorie">
-					<form:options items="${categories}" itemValue="id" itemLabel="nom"/>
+					<form:options  selected="${produit.categorie.nom}" items="${categories}" itemValue="id" itemLabel="nom"/>
 				</form:select>
 			</div>
 			<button type="submit" class="btn btn-primary">Modifier</button>
