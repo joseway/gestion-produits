@@ -19,7 +19,7 @@ public class HomeController {
 	@Autowired	
 	private ProduitService produitService;
 	
-	@RequestMapping(value="/")
+	@RequestMapping(value= {"/", "home"})
 	public String honePage(Model model) {
 		model.addAttribute("produit", new Produit());
 		model.addAttribute("titre", "Ma page Accueil");

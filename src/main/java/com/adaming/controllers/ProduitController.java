@@ -2,8 +2,11 @@ package com.adaming.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.models.Categorie;
 import com.adaming.models.Produit;
@@ -34,4 +37,24 @@ public class ProduitController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/{id}")
+	public String findById(@PathVariable("id")Long id, Model model) {
+		Produit prod = produitService.findById(id);
+		model.addAttribute("produit", prod);
+		return "produit";
+	}
+	
+	@RequestMapping(value="/update/{id}", method=RequestMethod.GET)
+	public String update(@PathVariable("id")Long id, Model model) {
+		model.addAttribute("categories", categorieService.findAll());
+		model.addAttribute("produit", produitService.findById(id));
+		
+		return "updateProduit";
+	}
+	@RequestMapping(value="/update/{id}", method=RequestMethod.POST)
+	public String update(@ModelAttribute("produit")Produit produit) {
+		produitService.save(produit);
+		
+		return "redirect:/produits";
+	}
 }

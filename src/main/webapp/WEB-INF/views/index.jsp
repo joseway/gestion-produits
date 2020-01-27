@@ -15,6 +15,27 @@
 			<div class="row">
 				<div class="col-md-8">
 					<h4>Tous les produits</h4>
+					<div>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Prix</th>
+									<th>Nom</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="prod" items="${produits}">
+								<tr>
+								
+									<td>${prod.prix}</td>
+									<td><a href="<c:url value="/produits/${prod.id}" />">${prod.nom}</a></td>
+								</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					
+					
 				</div>
 				<div class="col-md-4">
 					<h4>Creer Categorie</h4>
